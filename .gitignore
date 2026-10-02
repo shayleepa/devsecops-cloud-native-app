@@ -1,0 +1,20 @@
+```
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+
+# Node / App
+node_modules/
+npm-debug.log
+
+# Operating System &amp; Secrets
+.DS_Store
+.env
+*.pem
+*.key
+
+```
+
+---

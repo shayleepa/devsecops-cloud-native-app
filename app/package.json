@@ -1,0 +1,1 @@
+{ "name": "devsecops-cloud-app", "version": "1.0.0", "description": "Cloud-native DevSecOps Capstone Application", "main": "src/server.js", "scripts": { "start": "node src/server.js" }, "dependencies": { "express": "^4.19.2" } }
