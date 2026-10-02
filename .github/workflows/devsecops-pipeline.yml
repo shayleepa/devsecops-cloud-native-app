@@ -8,24 +8,25 @@ on:
 
   
 jobs:
-  # Stage 1: Code quality and static application security testing (SAST) sast-and-lint:
-  name: SAST & Code Security
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
+  # Stage 1: Code quality and static application security testing (SAST) 
+  sast-and-lint:
+    name: SAST & Code Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-        chache-dependency-path: app/package-lock.json
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
 
-    - name: Security Audit Dependencies
-      run: |
-        cd app
-        npm audit --audit-level=high || true
+      - name: Security Audit Dependencies
+        run: |
+          cd app
+          npm audit --audit-level=high || true
 
 # Stage 2: Container Security and Vulnerability scanning container-security
 container-security:
@@ -61,5 +62,5 @@ k8s-security-scan:
 
     - name: Validate Kubernetes YAML Syntax
       run: |
-        python3 -c "import.yaml, glob; [yaml.safe_load(open(f)) for f in glob.glob('k8s/*.yaml')]"
+        python3 -c "import yaml, glob; [yaml.safe_load(open(f)) for f in glob.glob('k8s/*.yaml')]"
         echo "All Kubernetes manifests parsed successfully!"
