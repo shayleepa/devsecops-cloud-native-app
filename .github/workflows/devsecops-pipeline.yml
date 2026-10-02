@@ -23,6 +23,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: app/package-lock.json
 
+      - name: Install Dependencies
+        run: |
+          cd app
+          npm install
+
       - name: Security Audit Dependencies
         run: |
           cd app
