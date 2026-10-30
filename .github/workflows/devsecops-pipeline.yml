@@ -1,4 +1,4 @@
-name: DevSecOps CI/CD Security Pipeline
+ename: DevSecOps CI/CD Security Pipeline
 
 on:
   push:
@@ -85,6 +85,7 @@ jobs:
       - name: Terraform Format Check
         run: |
           cd terraform
+	  terraform fmt -check
           terraform init -backend=false
           terraform validate
 
@@ -94,5 +95,6 @@ jobs:
           scan-type: 'config'
           hide-progress: false
           format: 'table'
-          exit-code: '0'
+          exit-code: '1'
+	  severity: 'HIGH,CRITICAL'
           scan-ref: './terraform'
