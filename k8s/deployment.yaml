@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: devsecops-web-app:v3
+        image: devsecops-web-app:v4
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
