@@ -65,7 +65,7 @@ jobs:
 
       - name: Validate Kubernetes YAML Syntax
         run: |
-          python3 -c "import yaml, glob; [yaml.safe_load(open(f)) for f in glob.glob('k8s/*.yaml')]"
+          python3 -c "import yaml, glob; [list(yaml.safe_load_all(open(f))) for f in glob.glob('k8s/*.yaml')]"
           echo "All Kubernetes manifests parsed successfully!"
 
 # Stage 4: Terraform Infrastructure as Code (IaC) Security & Syntax Check
